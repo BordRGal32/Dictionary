@@ -1,7 +1,8 @@
 class WordDef
   attr_reader :value
-  def initialize(value)
+  def initialize(value, language)
     @value = value
+    @language = language
   end
 end
 

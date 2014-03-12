@@ -1,4 +1,4 @@
-require 'word_def'
+# require 'word_def'
 
 class Term
   @@all_terms = []
@@ -30,10 +30,10 @@ class Term
     @@all_terms << self
   end
 
-  def Term.create(word, definition)
+  def Term.create(word, definition, language='English')
     term = Term.new(@@all_terms.length + 1)
-    term.words << Word.new(word)
-    term.definitions << Definition.new(definition)
+    term.words << Word.new(word, language)
+    term.definitions << Definition.new(definition, language)
     term.save
     term
   end
@@ -46,12 +46,12 @@ class Term
     @id = id
   end
 
-  def add_word(new_word)
-    @words << new_word
+  def add_word(new_word, language)
+    @words << Word.new(new_word, language)
   end
 
-  def add_definition(new_definition)
-    @definitions << new_definition
+  def add_definition(new_definition, language)
+    @definitions << Definition.new(new_definition, language)
   end
 
   def remove_word(index)
